@@ -71,7 +71,7 @@ mysqli_close($conexao);
                             <td><?php echo $arResultado['autor'] ?></td>
                             <td><?php echo implode("/ ",array_reverse(explode("-",$arResultado['lancamento']))) ?></td>
                             <td>
-                                <a href="visu_Livro.php?id=<?php echo $arResultado['idLivro']; ?>">Visualizar</a>
+                                <a href="visualizar.php?id=<?php echo $arResultado['idLivro']; ?>">Visualizar</a>
                             </td>
                             <td>
                                 <a href="edit_Livro.php?id=<?php echo $arResultado['idLivro']; ?>">Editar</a>
