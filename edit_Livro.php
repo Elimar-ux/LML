@@ -44,7 +44,6 @@ $arResultado = mysqli_fetch_assoc($resultado);
 
 <body>
 	<!-- Menu -->
-	| <a href="cadastrar.php">CADASTRAR USUÁRIO</a>|
 	| <a href="listaLivros.php">VOLTAR</a>|
 	<!-- Fim-Menu -->
 	<div id="corpo-form-edit">
