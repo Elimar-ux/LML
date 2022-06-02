@@ -5,9 +5,14 @@ include('conexao.php');
 	$nome = $_POST['nome'];
 	$edicao = $_POST['edicao'];
 	$autor = $_POST['autor'];
-
 	$lancamento = $_POST['lancamento'];
-	//$elemento = $_POST['elemento'];
+	$caminhoDoLivro = $_POST['arquivo'];
+
+	$destino = './capaLivros/' . $_FILES['arquivo']['name'];
+	$arquivo_tmp = $_FILES['arquivo']['tmp_name'];
+	move_uploaded_file( $arquivo_tmp, $destino  );
+
+
 		
 // 3. VALIDAR OS DADOS ENVIADOS PELO FORMULÁRIO(VALIDAÇÕES)
 	// 3.1. VERIFICAR SE OS CAMPOS OBRIGATORIOS ESTÃO PRREENCHIDO
@@ -37,8 +42,8 @@ include('conexao.php');
 	
 	
 // 6. CRIAR SCRIPT SQL QUE SERÁ EXECUTADO NO SERVIDOR DE BD
-	$sql = "INSERT INTO biblioteca (nome, edicao,autor, lancamento)";
-	$sql .= " VALUES ('$nome', '$edicao', '$autor', '$lancamento')";
+	$sql = "INSERT INTO biblioteca (nome, edicao, autor, lancamento, caminhoImagem)";
+	$sql .= " VALUES ('$nome', '$edicao', '$autor', '$lancamento', '$destino')";
 	
 	echo "<p>SQL: " . $sql;
 	
