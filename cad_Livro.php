@@ -44,8 +44,11 @@ mysqli_close($conexao);
 			<input type="text" name="edicao" placeholder="edicao">
 			<input type="text" name="autor" placeholder="autor">
 			<input type="date" name="lancamento" placeholder="lancamento">
+			<form method="POST" enctype="multipart/form-data" action="recebeUpload.php">
+   				Selecione uma imagem: <input name="arquivo" type="file" /><br />
+			   <input type="submit" value="Salvar" />
+			</form>
 			<input type="submit" value="CADASTRAR">
-
 		</form>
 	</div>
 
