@@ -26,7 +26,6 @@ mysqli_close($conexao);
 
 <body>
     <!-- Menu -->
-    | <a href="cad_livro.php">CADASTRAR LIVRO</a>|
     | <a href="../paginasControl/logout.php">Sair da seção - <?php echo $_SESSION['login'];?></a>|
     <!-- Fim-Menu -->
     <h1>Área do Administrador</h1>

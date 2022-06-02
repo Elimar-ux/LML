@@ -3,11 +3,11 @@ session_start();
 include('./paginasControl/conexao.php');
 // Conectando co o banco
 // teste se está vindo dados do banco
-if($conexao){
-	    	echo "<p>Conexão realizad com sucesso";
-	    }else{
-	    	echo "<p>Falha na conexão com o BD";
-	    } 
+//if($conexao){
+	    	//echo "<p>Conexão realizad com sucesso";
+	   // }else{
+	    	//echo "<p>Falha na conexão com o BD";
+	   // } 
 
 //$sql = "INSERT INTO `usuario` (`idUsuario`, `nome`, `login`, `senha`, `email`) VALUES";
 $sql = "SELECT * From usuario";

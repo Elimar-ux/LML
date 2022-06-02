@@ -32,8 +32,7 @@ mysqli_close($conexao);
 
 <body>
 	<!-- Menu -->
-	| <a href="cad_User.php">CADASTRAR USUÁRIO</a>|
-	| <a href="listaLivro.php">VOLTAR</a>|
+	| <a href="../index.php">VOLTAR</a>|
 	<!-- Fim-Menu -->
 	<div id="corpo-form-cad">
 		<h1>Cadastra-sssse</h1>
