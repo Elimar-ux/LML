@@ -10,9 +10,13 @@ include('verificaLogin.php');
     $lacamento = $_POST['lacamento'];
     $edicao = $_POST['edicao'];
 
-    $destino = '../capaLivros/' . $_FILES['arquivo']['name'];
-    $arquivo_tmp = $_FILES['arquivo']['tmp_name'];
-    move_uploaded_file( $arquivo_tmp, $destino  );
+    $sql = "SELECT * FROM biblioteca WHERE idlivro = $id_registro";
+    $resultado = mysqli_query($conexao, $sql);
+    $arResultado = mysqli_fetch_assoc($resultado);
+
+
+    
+
 
 // 2. CONECTAR NO BD
 // 3. CRIAR SCRIPT SQL
@@ -21,20 +25,23 @@ include('verificaLogin.php');
 
     //$sql = "UPDATE biblioteca SET nome = 'Elimar Veiga' WHERE idUsuario = 1;";
 
+    if ($_POST['altImg']) {
+        $destino = '../capaLivros/' . $_FILES['arquivo']['name'];
+        $arquivo_tmp = $_FILES['arquivo']['tmp_name'];
+        move_uploaded_file( $arquivo_tmp, $destino  );
+
+        $sqlImg = "UPDATE biblioteca SET caminhoImagem = '$destino' WHERE idLivro = $idLivro";
+        $resultado = mysqli_query($conexao, $sqlImg);
+    }
+
 
     $sql = "UPDATE biblioteca SET ";
     $sql .= " nome = '$nome', ";
     $sql .= " autor = '$autor',";
     $sql .= " lancamento = '$lacamento',";
-    $sql .= " edicao = '$edicao',";
-    $sql .= " caminhoImagem = '$destino'";
+    $sql .= " edicao = '$edicao'";
     
-
     $sql .= " WHERE idLivro = $idLivro;";
-
-    echo "<p>SQL: ". $sql;
-
-    echo "</p>";
     
 // 4. EXECUTAR SCRIPT SQL
     $resultado = mysqli_query($conexao, $sql);
