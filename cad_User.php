@@ -2,7 +2,6 @@
 session_start();
 include('conexao.php');
 
-include('verificaLogin.php');
 // Conectando co o banco
 
 // teste se está vindo dados do banco
