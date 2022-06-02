@@ -2,19 +2,16 @@
 session_start();
 include('conexao.php');
 include('verificaLogin.php');
-    print_r($_POST);
 
 // 1. RECUPERAR OS DADOS DO FORMULÁRIO(HTML)
     $idLivro = $_POST['livroId'];
     $nome = $_POST['nomeId'];
-    //$edicao = $_POST['edicao'];
     $autor = $_POST['autor'];
     $lacamento = $_POST['lacamento'];
-    $estado = $_POST['estado'];
+    $edicao = $_POST['edicao'];
 
 
 // 2. CONECTAR NO BD
-    $conexao = mysqli_connect("localhost", "root", "", "loja");
 // 3. CRIAR SCRIPT SQL
     // $sql = "UPDATE `biblioteca` SET `idlivro`='[value-1]',`nome`='[value-2]',`login`='[value-3]',`senha`='[value-4]' WHERE 1";
 
@@ -25,10 +22,11 @@ include('verificaLogin.php');
     $sql = "UPDATE biblioteca SET ";
     $sql .= " nome = '$nome', ";
     $sql .= " autor = '$autor',";
-    $sql .= " lacamento = '$lacamento'";
+    $sql .= " lancamento = '$lacamento',";
+    $sql .= " edicao = '$edicao'";
     
 
-    $sql .= " WHERE idUsuario = $idusuario;";
+    $sql .= " WHERE idLivro = $idLivro;";
 
     echo "<p>SQL: ". $sql;
 

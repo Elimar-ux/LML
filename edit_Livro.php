@@ -1,7 +1,6 @@
 <?php
 session_start();
 include('conexao.php');
-
 include('verificaLogin.php');
 
 print_r($_GET);
@@ -9,7 +8,7 @@ $id_registro = $_GET['id'];
 
 
 // 6. CRIAR SCRIPT SQL QUE SERÁ EXECUTADO NO SERVIDOR DE BD
-$sql = "SELECT * FROM biblioteca WHERE idlivro = $id_registro;";
+$sql = "SELECT * FROM biblioteca WHERE idlivro = $id_registro";
 
 
 // 7. EXECUTAR SCRIPT SQL
@@ -64,7 +63,7 @@ $arResultado = mysqli_fetch_assoc($resultado);
 			Autor: <input type="text" name="autor" value="<?php echo $arResultado['autor'] ?>"><br />
 
 
-			Edição: <input type="date" name="lacamento" value="<?php echo $arResultado['lacamento'] ?>"><br />
+			Lançamento: <input type="date" name="lacamento" value="<?php echo $arResultado['lacamento'] ?>"><br />
 			<p>
 				<input type="submit" nome="btn_enviar" value="ALTERAR">
 			</p>
