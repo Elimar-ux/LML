@@ -1,8 +1,6 @@
 ﻿<?php
 session_start();
 include('../paginasControl/conexao.php');
-
-include('../paginasControl/verificaLogin.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,7 +9,7 @@ include('../paginasControl/verificaLogin.php');
 	</head>
 	<body>
 		<h3>Esqueci a Senha</h3>
-		<form method="post" action="../paginasControl/cEsqueciaSenha.php">			
+		<form method="post" action="alterarSenha.php">			
 			Usuário: <input type="text" name="user" placeholder="Informe o nome de usuário"><br/>			
 			<p>
 				<input type="submit" value="GERAR NOVA SENHA">

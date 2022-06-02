@@ -58,7 +58,7 @@ else
             <input type="submit" value="ACESSAR"> 
             
             <a href="paginas/cad_User.php">Ainda não é inscrito?<strong>Cadastra-se!</strong>
-            <a href="paginas/er.php">Esqueci minha senha
+            <a href="paginas/esqueciasenha.php">Esqueci minha senha
         </form>
     </div>
 
