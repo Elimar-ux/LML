@@ -41,17 +41,17 @@
 		// retornou mais de um registro?
 		if($rows > 0 ){
 			$idUser = $arResultado['idUsuario'];
-			header("Location: novaSenha.php?a=$idUser");
+			header("Location: ../paginas/novaSenha.php?a=$idUser");
 			exit();
 		}else{
 			$msg = "Dados informados são inválidos";
-			header("Location: index.php?m=$msg");
+			header("Location: ../index.php?m=$msg");
 			exit();
 		}
 		
 	}else{// erro na consulta ao BD
 		$msg = "Não foi possível gerar nova senha";
-		header("Location: index.php?m=$msg");
+		header("Location: ../index.php?m=$msg");
 		exit();
 	}
 

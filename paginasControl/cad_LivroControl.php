@@ -8,7 +8,7 @@ include('conexao.php');
 	$lancamento = $_POST['lancamento'];
 	$caminhoDoLivro = $_POST['arquivo'];
 
-	$destino = './capaLivros/' . $_FILES['arquivo']['name'];
+	$destino = '../capaLivros/' . $_FILES['arquivo']['name'];
 	$arquivo_tmp = $_FILES['arquivo']['tmp_name'];
 	move_uploaded_file( $arquivo_tmp, $destino  );
 
@@ -58,10 +58,10 @@ include('conexao.php');
 // 9. REALIZAR OS PROCESSAMENTOS NECESSÁRIOS (...)
 if($resultado){ //atualizado
 	$msg = "Registro atualizado com sucesso";
-	header ('Location: listaLivros.php?m=$msg');
+	header ('Location: ../paginas/listaLivros.php?m=$msg');
 }else{  //quando não for atualizado
 	$msg = "Erro ao atualizar os dados do Livro";
-	header ('Location: cad_Livro.php?m=$msg');
+	header ('Location: ../paginas/cad_Livro.php?m=$msg');
 }
 	
 ?>

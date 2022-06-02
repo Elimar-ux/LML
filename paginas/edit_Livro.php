@@ -1,9 +1,8 @@
 <?php
 session_start();
-include('conexao.php');
-include('verificaLogin.php');
+include('../paginasControl/conexao.php');
+include('../paginasControl/verificaLogin.php');
 
-print_r($_GET);
 $id_registro = $_GET['id'];
 
 
@@ -39,30 +38,27 @@ $arResultado = mysqli_fetch_assoc($resultado);
 
 <head>
 	<title>EDITAR Livro</title>
-	<link rel="stylesheet" href="css/estilo_cadastrarr.css">
+	<link rel="stylesheet" href="../css/estilo_cadastrarr.css">
 </head>
 
 <body>
 	<!-- Menu -->
-	| <a href="listaLivros.php">VOLTAR</a>|
+	 <a href="listaLivros.php">|VOLTAR|</a>
 	<!-- Fim-Menu -->
 	<div id="corpo-form-edit">
 
 		<h3>Editar Livro</h3>
-		<form method="POST" action="edit_LivroControl.php">
+		<form method="POST" enctype="multipart/form-data" action="../paginasControl/edit_LivroControl.php">
 
 			<!-- editar_control.php  -->
 			<input type="hidden" name="livroId" value="<?php echo $arResultado['idLivro'] ?>">
 			<!-- Fim editar_control.php  -->
 
 			Nome: <input type="text" name="nomeId" value="<?php echo $arResultado['nome'] ?>"><br />
-
 			Edição: <input type="text" name="edicao" value="<?php echo $arResultado['edicao'] ?>"><br />
-
 			Autor: <input type="text" name="autor" value="<?php echo $arResultado['autor'] ?>"><br />
-
-
-			Lançamento: <input type="date" name="lacamento" value="<?php echo $arResultado['lacamento'] ?>"><br />
+			Lançamento: <input type="date" name="lacamento" value="<?php echo $arResultado['lancamento'] ?>"><br />
+			Selecione uma imagem: <input name="arquivo" type="file" value="<?php echo $arResultado['caminhoImagem'] ?>" /><br />
 			<p>
 				<input type="submit" nome="btn_enviar" value="ALTERAR">
 			</p>

@@ -1,7 +1,7 @@
 <?php 
 session_start();
-include('conexao.php');
-include('verificaLogin.php');
+include('../paginasControl/conexao.php');
+include('../paginasControl/verificaLogin.php');
 
 print_r($_GET);
 $id_registro = $_GET['id'];
@@ -23,7 +23,7 @@ $arResultado = mysqli_fetch_assoc($resultado);
 <head>
 	<meta charset="utf-8" />
 	<title>Projeto Leia+ Livros</title>
-	<link rel="stylesheet" href="css/estilo_cadastrarr.css">
+	<link rel="stylesheet" href="../css/estilo_cadastrarr.css">
 
 </head>
 
@@ -33,7 +33,7 @@ $arResultado = mysqli_fetch_assoc($resultado);
 	<!-- Fim-Menu -->
 	<div id="corpo-form-cad">
 		<h1>Deletar-Livro</h1>
-		<form method="POST" action="excl_LivroControl.php">
+		<form method="POST" action="../paginasControl/excl_LivroControl.php">
 			<input type="hidden" name="id" value="<?php echo $arResultado['idLivro']; ?>"><br/>
 			<h2>Nome do livro: <?php echo $arResultado['nome'];?></h2>
 			<p>Deseja realmente excluir este livro?</p>

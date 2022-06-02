@@ -1,8 +1,8 @@
 <?php
 session_start();
-include('conexao.php');
+include('../paginasControl/conexao.php');
 
-include('verificaLogin.php');
+include('../paginasControl/verificaLogin.php');
 // Conectando co o banco
 // teste se está vindo dados do banco
 /*if($conexao){
@@ -28,7 +28,7 @@ mysqli_close($conexao);
 <head>
 	<meta charset="utf-8" />
 	<title>Projeto Leia+ Livros</title>
-	<link rel="stylesheet" href="css/estilo_cadastrarr.css">
+	<link rel="stylesheet" href="../css/estilo_cadastrarr.css">
 
 </head>
 
@@ -39,7 +39,7 @@ mysqli_close($conexao);
 	<!-- Fim-Menu -->
 	<div id="corpo-form-cad">
 		<h1>Cadastra-Livro</h1>
-		<form method="POST" enctype="multipart/form-data" action="cad_LivroControl.php">
+		<form method="POST" enctype="multipart/form-data" action="../paginasControl/cad_LivroControl.php">
 			<input type="text" name="nome" placeholder="Nome do livro">
 			<input type="text" name="edicao" placeholder="edicao">
 			<input type="text" name="autor" placeholder="autor">

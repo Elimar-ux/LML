@@ -33,10 +33,10 @@ include('conexao.php');
 
     if($resultado){ //atualizado
         $msg = "Registro atualizado com sucesso";
-        header ('Location: index.php?m=$msg');
+        header ('Location: ../index.php?m=$msg');
     }else{  //quando não for atualizado
         $msg = "Erro ao atualizar os dados do usuário";
-        header ('Location: editar.php?m=$msg');
+        header ('Location: ../paginas/editar.php?m=$msg');
     }
 // 6. REALIZAR OS PROCESSAMENTOS NECESSÁRIOS (...)
 

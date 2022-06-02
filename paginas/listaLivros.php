@@ -1,17 +1,13 @@
 <?php
 session_start();
-include('conexao.php');
+include('../paginasControl/conexao.php');
+include('../paginasControl/verificaLogin.php');
 
-include('verificaLogin.php');
-// Conectando co o banco
-
-// teste se está vindo dados do banco
-/* if($conexao){
-	    	echo "<p>Conexão realizad com sucesso";
-	    }else{
-	    	echo "<p>Falha na conexão com o BD";
-	    }
-	    */
+// Verifica o perfil de usuário
+if($_SESSION['perfil'] == 'cliente') {
+    header('Location: ../paginasCliente/listaLivrosCliente.php');
+    exit();
+}
 
 $sql = "SELECT * From biblioteca";
 
@@ -25,14 +21,15 @@ mysqli_close($conexao);
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/estilos_indext.css">
+    <link rel="stylesheet" href="../css/estilos_indext.css">
 </head>
 
 <body>
     <!-- Menu -->
     | <a href="cad_livro.php">CADASTRAR LIVRO</a>|
-    | <a href="logout.php">Sair da seção</a>|
+    | <a href="../paginasControl/logout.php">Sair da seção - <?php echo $_SESSION['login'];?></a>|
     <!-- Fim-Menu -->
+    <h1>Área do Administrador</h1>
     <h1>Lista de Livros disponiveis</h1>
 
 </body>

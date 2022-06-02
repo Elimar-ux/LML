@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('conexao.php');
+include('./paginasControl/conexao.php');
 // Conectando co o banco
 // teste se está vindo dados do banco
 if($conexao){
@@ -50,15 +50,15 @@ else
 <body>
     <div id="corpo-form">
         <h1>Entrar</h1>
-        <form method="POST" action="index_Control.php">
+        <form method="POST" action="paginasControl/index_Control.php">
 
      
             <input type="text" name="login" placeholder="Usuário">
             <input type="password" name="senha" placeholder="senha"> 
             <input type="submit" value="ACESSAR"> 
             
-            <a href="cad_User.php">Ainda não é inscrito?<strong>Cadastra-se!</strong>
-            <a href="er.php">Esqueci minha senha
+            <a href="paginas/cad_User.php">Ainda não é inscrito?<strong>Cadastra-se!</strong>
+            <a href="paginas/er.php">Esqueci minha senha
         </form>
     </div>
 

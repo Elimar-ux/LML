@@ -1,7 +1,7 @@
 <?php
 session_start();
-include('conexao.php');
-include('verificaLogin.php');
+include('../paginasControl/conexao.php');
+include('../paginasControl/verificaLogin.php');
 print_r($_GET);
 $id_registro = $_GET['id'];
 
@@ -82,7 +82,7 @@ $arResultado = mysqli_fetch_assoc($resultado);
 	| <a href="listaLivro.php">VOLTAR</a>|
 	<!-- Fim-Menu -->
 	<h3>Editar Usuário</h3>
-	<form method="POST" action="editar_control.php">
+	<form method="POST" action="../paginasControl/editar_control.php">
 
 		<!-- editar_control.php  -->
 		<input type="hidden" name="usuarioId" value="<?php echo $arResultado['idUsuario'] ?>">

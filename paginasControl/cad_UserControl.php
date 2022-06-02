@@ -57,9 +57,9 @@ include('conexao.php');
 	
 // 9. REALIZAR OS PROCESSAMENTOS NECESSÁRIOS (...)
 if($resultado){ //atualizado
-	header ('Location: index.php');
+	header ('Location: ../index.php');
 }else{  //quando não for atualizado
-	header ('Location: editar.php');
+	header ('Location: ../paginas/editar.php');
 }
 	
 ?>

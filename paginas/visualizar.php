@@ -1,7 +1,7 @@
 <?php 
 session_start();
-include('conexao.php');
-include('verificaLogin.php');
+include('../paginasControl/conexao.php');
+include('../paginasControl/verificaLogin.php');
 
 $id_registro = $_GET['id'];
 

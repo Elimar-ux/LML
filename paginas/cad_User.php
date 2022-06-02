@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('conexao.php');
+include('../paginasControl/conexao.php');
 
 // Conectando co o banco
 
@@ -26,7 +26,7 @@ mysqli_close($conexao);
 <head>
 	<meta charset="utf-8" />
 	<title>Projeto Leia+ Livros</title>
-	<link rel="stylesheet" href="css/estilo_cadastrarr.css">
+	<link rel="stylesheet" href="../css/estilo_cadastrarr.css">
 
 </head>
 
@@ -37,7 +37,7 @@ mysqli_close($conexao);
 	<!-- Fim-Menu -->
 	<div id="corpo-form-cad">
 		<h1>Cadastra-sssse</h1>
-		<form method="POST" action="cad_UserControl.php">
+		<form method="POST" action="../paginasControl/cad_UserControl.php">
 			<input type="text" name="nome" placeholder="Nome Completo">
 			<input type="text" name="email" placeholder="email">
 			<input type="text" name="user" placeholder="Usuário">

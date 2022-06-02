@@ -15,7 +15,7 @@ $deleta = "DELETE FROM biblioteca WHERE idLivro = ". $id;
 $resultado = mysqli_query($conexao, $deleta);
 
 if ($resultado) {
-	header('Location: listaLivros.php');
+	header('Location: ../paginas/listaLivros.php');
 	exit();
 }else{
 	echo "<br> erro!";

@@ -10,6 +10,9 @@ include('verificaLogin.php');
     $lacamento = $_POST['lacamento'];
     $edicao = $_POST['edicao'];
 
+    $destino = '../capaLivros/' . $_FILES['arquivo']['name'];
+    $arquivo_tmp = $_FILES['arquivo']['tmp_name'];
+    move_uploaded_file( $arquivo_tmp, $destino  );
 
 // 2. CONECTAR NO BD
 // 3. CRIAR SCRIPT SQL
@@ -23,7 +26,8 @@ include('verificaLogin.php');
     $sql .= " nome = '$nome', ";
     $sql .= " autor = '$autor',";
     $sql .= " lancamento = '$lacamento',";
-    $sql .= " edicao = '$edicao'";
+    $sql .= " edicao = '$edicao',";
+    $sql .= " caminhoImagem = '$destino'";
     
 
     $sql .= " WHERE idLivro = $idLivro;";
@@ -38,10 +42,10 @@ include('verificaLogin.php');
 
     if($resultado){ //atualizado
         $msg = "Registro atualizado com sucesso";
-        header ('Location: listaLivros.php?m=$msg');
+        header ('Location: ../paginas/listaLivros.php?m=$msg');
     }else{  //quando não for atualizado
         $msg = "Erro ao atualizar os dados do Livro";
-        header ('Location: edit_Livro.php?m=$msg');
+        header ('Location: ../paginas/edit_Livro.php?m=$msg');
     }
 // 6. REALIZAR OS PROCESSAMENTOS NECESSÁRIOS (...)
 
