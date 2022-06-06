@@ -90,8 +90,12 @@ $totalLivros = mysqli_num_rows($resultadoLivros);
                     </tbody>
                 </table>
             <?php
+            } if ($totalLivros == '0') {
+                echo "Não há registros!";
             }
             ?>
+
+            
     </div>
     <?php
         //Verificar a pagina anterior e posterior
