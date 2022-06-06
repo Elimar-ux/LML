@@ -9,11 +9,31 @@ if($_SESSION['perfil'] == 'cliente') {
     exit();
 }
 
-$sql = "SELECT * From biblioteca";
+//Verifica a pagina
+$pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
+//Conexoes com o banco de dados e informaçoes
+$sql = "SELECT * From biblioteca";
 $resultado = mysqli_query($conexao, $sql);
 $arResultado = mysqli_fetch_assoc($resultado);
-mysqli_close($conexao);
+
+//Contador de livros
+$totalLivros = mysqli_num_rows($resultado);
+
+//Livros por pagina
+$livros_pg = 6;  
+
+//Calcula quantas paginas seráo necessarias
+$nPaginas = ceil($totalLivros/$livros_pg);
+
+//Calcula a partir de qual livro ira mostrar nas paginas
+$inicio = ($livros_pg*$pagina)-$livros_pg;
+
+//Livros a serem mostrados na pagina
+$sqlLivros = "SELECT * From biblioteca limit $inicio, $livros_pg";
+$resultadoLivros = mysqli_query($conexao,$sqlLivros);
+$totalLivros = mysqli_num_rows($resultadoLivros);
+
 
 ?>
 
@@ -53,48 +73,59 @@ mysqli_close($conexao);
     <div class="tbl-content">
 
         <?php
-        do {
-            //print_r($arResultado);
-            if ($arResultado) {
+            while ($row_livros = mysqli_fetch_assoc($resultadoLivros)){
         ?>
                 <table cellpadding="0" cellspacing="0" border="0">
                     <tbody>
-
                         <tr>
-                            <td><?php echo $arResultado['idLivro']; ?></td>
-                            <td><?php echo $arResultado['nome']; ?></td>
-                            <td><?php echo $arResultado['edicao']; ?></td>
-                            <td><?php echo $arResultado['autor'] ?></td>
-                            <td><?php echo implode("/ ",array_reverse(explode("-",$arResultado['lancamento']))) ?></td>
+                            <td><?php echo $row_livros['idLivro']; ?></td>
+                            <td><?php echo $row_livros['nome']; ?></td>
+                            <td><?php echo $row_livros['edicao']; ?></td>
+                            <td><?php echo $row_livros['autor'] ?></td>
+                            <td><?php echo implode("/ ",array_reverse(explode("-",$row_livros['lancamento']))) ?></td>
                             <td>
-                                <a href="visualizar.php?id=<?php echo $arResultado['idLivro']; ?>">Visualizar</a>
+                                <a href="visualizar.php?id=<?php echo $row_livros['idLivro']; ?>">Visualizar</a>
                             </td>
                             <td>
-                                <a href="edit_Livro.php?id=<?php echo $arResultado['idLivro']; ?>">Editar</a>
+                                <a href="edit_Livro.php?id=<?php echo $row_livros['idLivro']; ?>">Editar</a>
                             </td>
                             <td>
-                                <a href="excl_Livro.php?id=<?php echo $arResultado['idLivro']; ?>">Excluir</a>
+                                <a href="excl_Livro.php?id=<?php echo $row_livros['idLivro']; ?>">Excluir</a>
                             </td>
                         </tr>
-
-
                     </tbody>
-
                 </table>
-
             <?php
-            } else {
-                echo "sem registros";
             }
-
             ?>
-
+    </div>
+    <?php
+        //Verificar a pagina anterior e posterior
+        $pagina_anterior = $pagina - 1;
+        $pagina_posterior = $pagina + 1;
+    ?>
+    <?php
+    if($pagina_anterior != 0){ ?>
+        <a href="listaLivros.php?pagina=<?php echo $pagina_anterior; ?>">
+            <span aria-hidden="true">&laquo;</span>
+        </a>
+    <?php }else{ ?>
+        <span aria-hidden="true">&laquo;</span>
+    <?php }  ?>
+    <?php 
+    //Apresentar a paginacao
+    for($i = 1; $i < $nPaginas + 1; $i++){ ?>
+        <a href="listaLivros.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+    <?php } ?>
 
         <?php
-        } while ($arResultado = mysqli_fetch_assoc($resultado));
-        ?>
-    </div>
-
+        if($pagina_posterior <= $nPaginas){ ?>
+            <a href="listaLivros.php?pagina=<?php echo $pagina_posterior; ?>">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        <?php }else{ ?>
+            <span aria-hidden="true">&raquo;</span>
+    <?php }  ?>
     <div>
 
         <p>
