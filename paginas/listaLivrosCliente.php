@@ -1,7 +1,6 @@
 <?php
 session_start();
 include('../paginasControl/conexao.php');
-
 include('../paginasControl/verificaLogin.php');
 
 // Verifica o perfil de usuário
@@ -13,11 +12,10 @@ if($_SESSION['perfil'] == 'adm') {
 //Conexoes com o banco de dados e informaçoes
 $sql = "SELECT * From biblioteca";
 $resultado = mysqli_query($conexao, $sql);
-$arResultado = mysqli_fetch_assoc($resultado);
 
 //Contador de livros
 $totalLivros = mysqli_num_rows($resultado);
-
+       
 ?>
 
 <!DOCTYPE html>
@@ -36,8 +34,6 @@ $totalLivros = mysqli_num_rows($resultado);
 
 </body>
 <section>
-
-
     <div class="tbl-header">
 
         <table cellpadding="7" cellspacing="0" border="0">
@@ -48,7 +44,9 @@ $totalLivros = mysqli_num_rows($resultado);
                     <th>Edição</th>
                     <th>Autor</th>
                     <th>lançamento</th>
-                    <th colspan="1">Opções</th>
+                    <th>Avaliar</th>
+                    <th>Aprovação</th>
+                    <th>Vizualizar</th>
                 </tr>
             </thead>
         </table>
@@ -66,8 +64,19 @@ $totalLivros = mysqli_num_rows($resultado);
                             <td><?php echo $row_livros['edicao']; ?></td>
                             <td><?php echo $row_livros['autor'] ?></td>
                             <td><?php echo implode("/ ",array_reverse(explode("-",$row_livros['lancamento']))) ?></td>
+                            <td><?php foreach(range(1,5)as $avaliar): ?>
+                                    <a href="../paginasControl/avaliar.php?livro=<?php echo $row_livros['idLivro'];?>&estrela=<?php echo $avaliar;?>&nomeUser=<?php echo $_SESSION['login'];?>"><?php echo $avaliar; ?></a>
+                                <?php endforeach; ?>
+                            </td>
+                            <td><?php
+                            if ($row_livros['avaliacoes'] == 0) {
+                                echo "Não há avaliações";
+                            }else{
+                               echo ($row_livros['avaliacoes']/5)*100, '%'; 
+                            }
+                            ?></td>
                             <td>
-                                <a href="visualizar.php?id=<?php echo $row_livros['idLivro']; ?>">Visualizar</a>
+                                <a href="visualizar.php?id=<?php echo $row_livros['idLivro'];?>&nomeUser=<?php echo $_SESSION['login'];?>">Visualizar</a>
                             </td>
                         </tr>
                     </tbody>
@@ -76,15 +85,8 @@ $totalLivros = mysqli_num_rows($resultado);
             } if ($totalLivros == '0') {
                 echo "Não há registros!";
             }
-            ?>
-
-            
+            ?>  
     </div>
-    <?php
-        //Verificar a pagina anterior e posterior
-        $pagina_anterior = $pagina - 1;
-        $pagina_posterior = $pagina + 1;
-    ?>
 </section>
 
 

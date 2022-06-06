@@ -34,8 +34,6 @@ $totalLivros = mysqli_num_rows($resultado);
 
 </body>
 <section>
-
-
     <div class="tbl-header">
 
         <table cellpadding="7" cellspacing="0" border="0">
@@ -46,6 +44,7 @@ $totalLivros = mysqli_num_rows($resultado);
                     <th>Edição</th>
                     <th>Autor</th>
                     <th>lançamento</th>
+                    <th>Aprovação</th>
                     <th colspan="3" style="padding-left: 10%;">Ações</th>
                 </tr>
             </thead>
@@ -64,6 +63,13 @@ $totalLivros = mysqli_num_rows($resultado);
                             <td><?php echo $row_livros['edicao']; ?></td>
                             <td><?php echo $row_livros['autor'] ?></td>
                             <td><?php echo implode("/ ",array_reverse(explode("-",$row_livros['lancamento']))) ?></td>
+                            <td><?php
+                            if ($row_livros['avaliacoes'] == 0) {
+                                echo "Não há avaliações";
+                            }else{
+                               echo ($row_livros['avaliacoes']/5)*100, '%'; 
+                            }
+                            ?></td>
                             <td>
                                 <a href="visualizar.php?id=<?php echo $row_livros['idLivro']; ?>">Visualizar</a>
                             </td>
