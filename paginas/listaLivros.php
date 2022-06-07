@@ -44,7 +44,7 @@ $totalLivros = mysqli_num_rows($resultado);
                     <th>Edição</th>
                     <th>Autor</th>
                     <th>lançamento</th>
-                    <th>Aprovação</th>
+                    <th>Avaliações</th>
                     <th colspan="3" style="padding-left: 10%;">Ações</th>
                 </tr>
             </thead>
@@ -67,7 +67,11 @@ $totalLivros = mysqli_num_rows($resultado);
                             if ($row_livros['avaliacoes'] == 0) {
                                 echo "Não há avaliações";
                             }else{
-                               echo ($row_livros['avaliacoes']/5)*100, '%'; 
+                               $sqlStars = "SELECT count(rateIndex) FROM stars WHERE idLivro = {$row_livros['idLivro']}";
+                               $resultadoStars = mysqli_query($conexao, $sqlStars);
+                               $row_avaliacoes = mysqli_fetch_assoc($resultadoStars);
+                               echo $row_livros['avaliacoes'], '/5 ESTRELAS';
+                               echo '<br>', 'Avaliaçoes: ', $row_avaliacoes['count(rateIndex)'];  
                             }
                             ?></td>
                             <td>
