@@ -36,10 +36,10 @@ if (isset($_GET['livro'], $_GET['estrela'])) {
 		$resultado = mysqli_query($conexao, $sql);
 		if ($resultado) {
 
-		$mediaAv = "SELECT AVG(rateIndex) FROM STARS WHERE idlivro = {$idLivro}";
+		$mediaAv = "SELECT round(AVG(rateIndex),2) FROM STARS WHERE idlivro = {$idLivro}";
 		$resultadoAv = mysqli_query($conexao, $mediaAv);
 		$arResultado = mysqli_fetch_assoc($resultadoAv);
-		$media = $arResultado['AVG(rateIndex)'];
+		$media = $arResultado['round(AVG(rateIndex),2)'];
 
 		$sql = "UPDATE biblioteca SET avaliacoes = '$media' WHERE idLivro = '$idLivro'";
 		$resultado = mysqli_query($conexao, $sql);
