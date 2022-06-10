@@ -10,7 +10,7 @@ include('verificaLogin.php');
     $lacamento = $_POST['lacamento'];
     $edicao = $_POST['edicao'];
 
-    $sql = "SELECT * FROM biblioteca WHERE idlivro = $id_registro";
+    $sql = "SELECT * FROM biblioteca WHERE idlivro = $idLivro";
     $resultado = mysqli_query($conexao, $sql);
     $arResultado = mysqli_fetch_assoc($resultado);
 
