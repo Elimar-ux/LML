@@ -10,7 +10,8 @@ CREATE TABLE `biblioteca` (
   `edicao` varchar(20) NOT NULL,
   `lancamento` date NOT NULL,
   `autor` varchar(25) NOT NULL,
-  `caminhoImagem` varchar(256) DEFAULT NULL,
+  `caminhoImagem` varchar(256) NOT NULL,
+  `caminhoLivro` varchar(256) NOT NULL,
   `avaliacoes` float NOT NULL,
   PRIMARY KEY (`idLivro`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4;
