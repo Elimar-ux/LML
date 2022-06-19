@@ -44,7 +44,7 @@ mysqli_close($conexao);
 			<input type="text" name="edicao" placeholder="edicao">
 			<input type="text" name="autor" placeholder="autor">
 			<input type="date" name="lancamento" placeholder="lancamento">
-			<textarea wrap  rows="10" cols="61" name="descricao" id="descricao" required spellcheck='true'></textarea><br>
+			<textarea name="descricao" id="descricao" required spellcheck='true'></textarea><br>
 			Selecione uma imagem: <input name="arquivo" type="file" /><br />
 			Enviar Livro: <input name="livro" type="file" /><br />
 			<input type="submit" value="CADASTRAR">

@@ -9,6 +9,7 @@ include('verificaLogin.php');
     $autor = $_POST['autor'];
     $lacamento = $_POST['lacamento'];
     $edicao = $_POST['edicao'];
+    $descricao = nl2br($_POST['descricao']);
 
     $sql = "SELECT * FROM biblioteca WHERE idlivro = $idLivro";
     $resultado = mysqli_query($conexao, $sql);
@@ -39,6 +40,7 @@ include('verificaLogin.php');
     $sql .= " nome = '$nome', ";
     $sql .= " autor = '$autor',";
     $sql .= " lancamento = '$lacamento',";
+    $sql .= " descricao = '$descricao',";
     $sql .= " edicao = '$edicao'";
     
     $sql .= " WHERE idLivro = $idLivro;";

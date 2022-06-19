@@ -6,7 +6,7 @@ include('conexao.php');
 	$edicao = $_POST['edicao'];
 	$autor = $_POST['autor'];
 	$lancamento = $_POST['lancamento'];
-	$resumo = $_POST['descricao'];
+	$resumo = nl2br($_POST['descricao']);
 
 	$destino = '../capaLivros/' . $_FILES['arquivo']['name'];
 	$arquivo_tmp = $_FILES['arquivo']['tmp_name'];
