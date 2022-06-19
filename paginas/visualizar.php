@@ -26,8 +26,8 @@ $arResultado = mysqli_fetch_assoc($resultado);
 	<h2>Imagem</h2>
 	<img src="<?php echo $arResultado['caminhoImagem'];?>" width="350">
 	<textarea readonly rows="10" cols="61" ><?php echo $arResultado['descricao'];?></textarea>
-
-
+	<br>
+	<a href="<?php echo $arResultado['caminhoLivro'];?>" download>Baixar Livro</a>
 </body>
 
 </html>

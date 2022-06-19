@@ -6,12 +6,16 @@ include('conexao.php');
 	$edicao = $_POST['edicao'];
 	$autor = $_POST['autor'];
 	$lancamento = $_POST['lancamento'];
-	$caminhoDoLivro = $_POST['arquivo'];
 	$resumo = $_POST['descricao'];
 
 	$destino = '../capaLivros/' . $_FILES['arquivo']['name'];
 	$arquivo_tmp = $_FILES['arquivo']['tmp_name'];
-	move_uploaded_file( $arquivo_tmp, $destino  );
+	move_uploaded_file( $arquivo_tmp, $destino );
+
+	$destinoLivro = '../livros/' . $_FILES['livro']['name'];
+	$arquivo_tmp = $_FILES['livro']['tmp_name'];
+	move_uploaded_file( $arquivo_tmp, $destinoLivro );
+
 
 
 		
@@ -43,8 +47,8 @@ include('conexao.php');
 	
 	
 // 6. CRIAR SCRIPT SQL QUE SERÁ EXECUTADO NO SERVIDOR DE BD
-	$sql = "INSERT INTO biblioteca (nome, edicao, autor, lancamento, caminhoImagem, descricao)";
-	$sql .= " VALUES ('$nome', '$edicao', '$autor', '$lancamento', '$destino', '$resumo')";
+	$sql = "INSERT INTO biblioteca (nome, edicao, autor, lancamento, caminhoImagem, caminhoLivro, descricao)";
+	$sql .= " VALUES ('$nome', '$edicao', '$autor', '$lancamento', '$destino', '$destinoLivro', '$resumo')";
 	
 	echo "<p>SQL: " . $sql;
 	
