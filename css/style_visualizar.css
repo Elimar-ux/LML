@@ -1,0 +1,74 @@
+body {
+	font-family: Arial;
+	background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+    background: linear-gradient(to right, #25c481, #25b7c4);
+	background-size: cover;
+	text-align: center;
+	color: black;
+}
+
+#titulo {
+	position: absolute;
+	top: 10%;
+	left: 18%;
+}
+
+#descri{
+	position: absolute;
+	top: 10%;
+	left: 55%;
+}
+
+.capa {
+	position: absolute;
+	width: 350;
+	height: 200;
+	top: 20%;
+	left: 15%;
+	background-color: whitesmoke;
+	padding: 0.1em;
+	border-radius: 3px;
+}
+
+.descricao {
+	position: absolute;
+	text-align: left;
+	width: 500px;
+	height: 230px;
+	top: 20%;
+	left: 45%;
+	background-color: rgba(0,255,200,0.3);
+	padding: 0.1em;
+	border-radius: 3px;
+}
+
+#botao {
+	cursor: pointer;
+	background-color: rgba(176, 183, 193, 0.4);
+	top: 50%;
+	left: 56%;
+	color: black;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 1px 1px 5px black;
+}
+
+#botao:hover{
+	background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+    background: linear-gradient(to right, #25c481, #25b7c4);
+}
+
+.btn-container{
+	position: absolute;
+	width: 350;
+	height: 200;
+	top: 50%;
+	left: 56%;
+}
+
+.btn {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	gap: 20px;
+}
