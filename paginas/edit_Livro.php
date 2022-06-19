@@ -58,6 +58,7 @@ $arResultado = mysqli_fetch_assoc($resultado);
 			Edição: <input type="text" name="edicao" value="<?php echo $arResultado['edicao'] ?>"><br />
 			Autor: <input type="text" name="autor" value="<?php echo $arResultado['autor'] ?>"><br />
 			Lançamento: <input type="date" name="lacamento" value="<?php echo $arResultado['lancamento'] ?>"><br />
+			Resumo do livro: <input type="textarea" name="resumo" value="<?php echo $arResultado['descricao'] ?>"><br />
 			Selecione uma imagem: <input name="arquivo" type="file" /> Alterar imagem:<input type="checkbox" name="altImg" style="width: 30px;
             height: 30px;">
 			<p>

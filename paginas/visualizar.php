@@ -5,15 +5,13 @@ include('../paginasControl/verificaLogin.php');
 
 $id_registro = $_GET['id'];
 
-
-// 6. CRIAR SCRIPT SQL QUE SERÁ EXECUTADO NO SERVIDOR DE BD
+//CRIAR SCRIPT SQL QUE SERÁ EXECUTADO NO SERVIDOR DE BD
 $sql = "SELECT * FROM biblioteca WHERE idlivro = $id_registro";
 
-
-// 7. EXECUTAR SCRIPT SQL
-
+//EXECUTAR SCRIPT SQL
 $resultado = mysqli_query($conexao, $sql);
 $arResultado = mysqli_fetch_assoc($resultado);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,8 +21,13 @@ $arResultado = mysqli_fetch_assoc($resultado);
 	<title>Visualizar</title>
 </head>
 <body>
+	<br>
 	<h1><?php echo $arResultado['nome'];?></h1>
 	<h2>Imagem</h2>
 	<img src="<?php echo $arResultado['caminhoImagem'];?>" width="350">
+	<textarea readonly rows="10" cols="61" ><?php echo $arResultado['descricao'];?></textarea>
+
+
 </body>
+
 </html>

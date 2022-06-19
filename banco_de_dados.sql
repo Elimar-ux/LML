@@ -14,7 +14,7 @@ CREATE TABLE `biblioteca` (
   `avaliacoes` float NOT NULL,
   PRIMARY KEY (`idLivro`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4;
-CREATE TABLE `stars` (
+CREATE TABLE `avaliacoes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rateIndex` float NOT NULL,
   `idLivro` int(11) NOT NULL,
